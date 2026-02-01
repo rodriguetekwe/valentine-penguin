@@ -5,31 +5,78 @@
 
   <style>
     body {
-      font-family: Arial;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 40px 50px;
+      border-radius: 20px;
       text-align: center;
-      margin-top: 100px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      position: relative;
+      min-width: 320px;
+    }
+
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: #222;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #888;
+      margin-top: 12px;
+    }
+
+    button {
+      padding: 10px 22px;
+      font-size: 15px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      margin-right: 15px;
     }
 
     #no {
+      background: #f1f1f1;
+      color: #333;
       position: absolute;
     }
 
     #penguin {
       display: none;
-      margin-top: 40px;
-      width: 220px;
+      margin-top: 25px;
+      width: 200px;
     }
   </style>
 </head>
 
 <body>
 
-  <h2 id="question">Will you be my Valentine?</h2>
+  <div class="card">
+    <h2 id="question">Ayo Mi ❤️ will you be my Valentine?</h2>
 
-  <button id="yes">Yes</button>
-  <button id="no">No</button>
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
 
-  <img id="penguin" src="penguin.gif">
+    <div class="subtitle">“No” seems a bit shy 😈</div>
+
+    <img id="penguin" src="penguin.gif">
+  </div>
 
   <script>
     const noBtn = document.getElementById('no');
@@ -38,12 +85,15 @@
     const question = document.getElementById('question');
 
     noBtn.addEventListener('mouseover', () => {
-      noBtn.style.left = Math.random() * 80 + 'vw';
-      noBtn.style.top = Math.random() * 80 + 'vh';
+      const card = document.querySelector('.card');
+      const rect = card.getBoundingClientRect();
+
+      noBtn.style.left = Math.random() * (rect.width - 60) + 'px';
+      noBtn.style.top = Math.random() * (rect.height - 40) + 'px';
     });
 
     yesBtn.addEventListener('click', () => {
-      question.innerText = 'Yay';
+      question.innerText = 'Yay 💖';
       yesBtn.style.display = 'none';
       noBtn.style.display = 'none';
       penguin.style.display = 'block';
