@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #no {
+      position: absolute;
+    }
+
+    #penguin {
+      display: none;
+      margin-top: 40px;
+      width: 220px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2 id="question">Will you be my Valentine?</h2>
+
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+
+  <img id="penguin" src="penguin.gif">
+
+  <script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const penguin = document.getElementById('penguin');
+    const question = document.getElementById('question');
+
+    noBtn.addEventListener('mouseover', () => {
+      noBtn.style.left = Math.random() * 80 + 'vw';
+      noBtn.style.top = Math.random() * 80 + 'vh';
+    });
+
+    yesBtn.addEventListener('click', () => {
+      question.innerText = 'Yay';
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+      penguin.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
